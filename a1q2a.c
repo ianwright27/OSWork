@@ -2,13 +2,11 @@
     Author: Ian Wright
     -------------------
 
-    README: 
+    README:
     ---------------------
     Here we shall use File Handling concept in C programming.
-    We'll use POSIX threads to achieve the parallelism.
-    and system calls in the exec() family to execute programs
-    captured from file handling, line by line.
-    Execution will happen in each thread.
+    We'll use system calls in the exec() family to execute programs
+    captured from file handling alongside fork() and wait(), line by line.
 
     ------------------------------
 */
@@ -28,20 +26,20 @@ void *execute_program(void *value){
 int main(int argc, char* argv[])
 {
 	pthread_t thread;
-	
+
 	int num = 123;
 	int lineCount = 0;
-	
+
 	printf("Hellow from the first thread");
-	
+
 	pthread_create(&thread, NULL, execute_program, NULL);
 	pthread_join(thread, NULL);
-	
+
     // take filename from system arguments
-    char* fileName = argv[1]; 
-    
+    char* fileName = argv[1];
+
     // open file pointer
-    FILE* file = fopen(fileName, "r"); 
+    FILE* file = fopen(fileName, "r");
     char line[1000]; // will hold line
 
     // get line by line from file
@@ -49,7 +47,7 @@ int main(int argc, char* argv[])
         printf("%s", line);
         lineCount++;
     }
-  
+
 
     // close file  
     fclose(file);
