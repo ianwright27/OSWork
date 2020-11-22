@@ -1,8 +1,4 @@
-helloWorld
-helloUniverse
-helloCountry
-helloAtom
-helloUoN
-dir
-/usr/bin/ls
+ls
 /usr/bin/grep --help
+/usr/bin/hydra
+neofetch
