@@ -1,4 +1,2 @@
 ls
-/usr/bin/grep --help
-/usr/bin/hydra
 neofetch

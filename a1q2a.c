@@ -12,29 +12,19 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
 
-void *execute_program(void *value){
-
-	printf("Hello from the second thread\n");
-    // incase there's nothing
-    return NULL;
-}
-
-
 int main(int argc, char* argv[])
 {
-	pthread_t thread;
 
-	int num = 123;
+	// main parent PID
+	printf("\n\nmain() PID: %d\n", getpid());
+	printf("Executing these programs: \n\n\n");
+	
 	int lineCount = 0;
-
-	printf("Hellow from the first thread");
-
-	pthread_create(&thread, NULL, execute_program, NULL);
-	pthread_join(thread, NULL);
 
     // take filename from system arguments
     char* fileName = argv[1];
@@ -45,8 +35,15 @@ int main(int argc, char* argv[])
 
     // get line by line from file
     while (fgets(line, sizeof(line), file)) {
-        printf("%s", line);
+        printf("-> Executing %s", line);
         lineCount++;
+        pid_t pid = fork();
+        if (pid == 0) {	
+			printf("child PID: %d, (program %d)\n\n", getpid(), lineCount);
+			execlp(line, line, NULL);
+		}else{
+			wait(NULL);
+		}
     }
 
 
