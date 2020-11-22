@@ -1,0 +1,8 @@
+helloWorld
+helloUniverse
+helloCountry
+helloAtom
+helloUoN
+dir
+/usr/bin/ls
+/usr/bin/grep --help
