@@ -23,4 +23,4 @@ Since using it in loops can be a dangerous move, I forked in every instance whil
 The list of executables, are stored in **"executables.txt"** file. Reduced the number to 2 programs.
 After running, I noticed "/bin/neofetch" (for example) will be executed twice as seen below.
 
-![](image.png)
+![](image.PNG)
