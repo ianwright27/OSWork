@@ -32,16 +32,19 @@ int main(int argc, char* argv[])
     // open file pointer
     FILE* file = fopen(fileName, "r");
     char line[1000]; // will hold line
+    char *line_arg[] = {"", "--help", NULL};
 
     // get line by line from file
     while (fgets(line, sizeof(line), file)) {
         printf("-> Executing %s", line);
         lineCount++;
         pid_t pid = fork();
-        if (pid == 0) {	
+        if (pid == 0) {
+			line_arg[0] = line;
 			printf("child PID: %d, (program %d)\n\n", getpid(), lineCount);
-			execlp(line, line, NULL);
+			execv(line_arg[0], line_arg);
 		}else{
+			// we wait for the child to finish
 			wait(NULL);
 		}
     }

@@ -1,2 +1,2 @@
-ls
-neofetch
+/bin/ls
+/bin/neofetch
