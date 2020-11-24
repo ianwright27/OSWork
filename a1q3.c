@@ -15,7 +15,7 @@ int total=0;
 
 
 // To prevent segmentation fault since each thread might be trying to access Total
-pthread_mutex_t MUT=PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t MUT = PTHREAD_MUTEX_INITIALIZER;
 
 
 // function to sum integers
@@ -44,11 +44,11 @@ void *sum_of_integers(void *arguments){
 int main(int argc, char* argv[]){
     int n, m;
 	
-	// to capture the integers
-	long int_n, int_m, int_x;
-	int_n = strtol(argv[0], NULL, 10);
-	int_m = strtol(argv[1], NULL, 10);
-	int_x = strtol(argv[2], NULL, 10);
+    // to capture the integers from strings in arguments
+    long int_n, int_m, int_x;
+    int_n = strtol(argv[0], NULL, 10);
+    int_m = strtol(argv[1], NULL, 10);
+    int_x = strtol(argv[2], NULL, 10);
 	
     // number of threads to create
     int numThreads;
@@ -58,9 +58,8 @@ int main(int argc, char* argv[]){
     m = int_m;
     numThreads = int_x;
 
-
-	// Debugging
-	printf("\nassignments to int versions of sys args");
+    // Debugging
+    //printf("\nassignments to int versions of sys args");
 	
     // assign arguments to struct
     struct sum_args *args;
@@ -68,16 +67,15 @@ int main(int argc, char* argv[]){
     args->n = m;
 
 
-	// Debugging
-	printf("\nsum_args struct assigned");
+    // Debugging
+    //printf("\nsum_args struct assigned");
 
     // create pthread array of "numThread" elements
     pthread_t thread[numThreads];
 	
-	/*	
-	// Debugging
-	printf("\narray of threads created");
-	*/
+   /*	
+   // Debugging
+   printf("\narray of threads created");*/
     
     for (int i=0; i<numThreads; ++i){
 
@@ -99,8 +97,5 @@ int main(int argc, char* argv[]){
 
     }
     
-
-    printf("All threads completed.");
-
     return 0;
 }
