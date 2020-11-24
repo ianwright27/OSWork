@@ -26,8 +26,9 @@ The list of executables, are stored in **"executables.txt"** file.
 Reduced the number of programs to 2 programs in order to debug.
 After running, I noticed "/bin/neofetch" (for example) will be executed twice as seen below.
 
+![](image.PNG)
+
 ### 3
 Segmentation Fault. On trying to capture the system arguments, nothing is printed out even though the syntax is correct.
 If that is not the problem then maybe it is in the use of Mutexes.
 
-![](image.PNG)
